@@ -1,6 +1,6 @@
 # elm-electron-helloworld
 
-## Build &* Run
+## Build and Run
 ```sh
 pip install -r requirements.txt
 make env
