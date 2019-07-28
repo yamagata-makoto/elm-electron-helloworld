@@ -1,6 +1,6 @@
 venv
 *.pyc
 __pycache__
-elm-staff
+elm-stuff
 node_modules
-
+static/elm.js
