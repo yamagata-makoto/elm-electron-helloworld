@@ -8,7 +8,6 @@ app.on('window-all-closed', function() {
 
 app.on('ready', function() {
     var server = require('child_process').spawn('python',['./server.py']);
-    var requestPromise = require('request-promise');
     var indexURL = 'http://localhost:5000/';
 
     var startUp = function() {
