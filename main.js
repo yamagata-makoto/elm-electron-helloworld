@@ -2,11 +2,11 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
-app.on('window-all-closed', function() {
+app.on('window-all-closed', () => {
     app.quit();
 });
 
-app.on('ready', function() {
+app.on('ready', () => {
     var server = require('child_process').spawn('python',['./server.py']);
     var indexURL = 'http://localhost:5000/';
     var requestPromise = require('request-promise');
