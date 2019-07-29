@@ -20,6 +20,7 @@ app.on('ready', function() {
                 mainWindow.loadURL(indexURL)
 
                 mainWindow.on('closed', function() {
+                    electron.session.defaultSession.clearCache(() => {})
                     server.kill('SIGINT');
                 });
             })
