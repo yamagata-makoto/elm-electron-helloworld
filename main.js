@@ -9,19 +9,22 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
     var server = require('child_process').spawn('python',['./server.py']);
     var indexURL = 'http://localhost:5000/';
+    var requestPromise = require('request-promise');
 
-    var startUp = function() {
-        console.log('server started');
-
+    var startUp = () => {
         let mainWindow = new BrowserWindow({ width: 400, height: 450 });
         mainWindow.loadURL(indexURL)
 
-        mainWindow.on('closed', function() {
+        mainWindow.on('closed', () => {
             electron.session.defaultSession.clearCache(() => {})
             server.kill('SIGINT');
         });
     };
 
-    startUp();
+    requestPromise(indexURL)
+        .then((_) => {
+            console.log('server started');
+            startUp();
+        });
 });
 
