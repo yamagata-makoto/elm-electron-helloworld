@@ -16,7 +16,7 @@ app.on('ready', function() {
             .then(function(htmlString) {
                 console.log('server started');
 
-                let mainWindow = new BrowserWindow({ width: 400, height: 300 });
+                let mainWindow = new BrowserWindow({ width: 400, height: 450 });
                 mainWindow.loadURL(indexURL)
 
                 mainWindow.on('closed', function() {
