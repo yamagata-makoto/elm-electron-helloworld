@@ -12,21 +12,15 @@ app.on('ready', function() {
     var indexURL = 'http://localhost:5000/';
 
     var startUp = function() {
-        requestPromise(indexURL)
-            .then(function(htmlString) {
-                console.log('server started');
+        console.log('server started');
 
-                let mainWindow = new BrowserWindow({ width: 400, height: 450 });
-                mainWindow.loadURL(indexURL)
+        let mainWindow = new BrowserWindow({ width: 400, height: 450 });
+        mainWindow.loadURL(indexURL)
 
-                mainWindow.on('closed', function() {
-                    electron.session.defaultSession.clearCache(() => {})
-                    server.kill('SIGINT');
-                });
-            })
-            .catch(function(err) {
-                console.log(err);
-            });
+        mainWindow.on('closed', function() {
+            electron.session.defaultSession.clearCache(() => {})
+            server.kill('SIGINT');
+        });
     };
 
     startUp();
